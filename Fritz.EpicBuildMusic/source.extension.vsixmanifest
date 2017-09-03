@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Fritz.EpicBuildMusic" Version="1.0" Language="en-US" Publisher="Jeffrey T. Fritz" />
+        <Identity Id="Fritz.EpicBuildMusic" Version="0.2" Language="en-US" Publisher="Jeffrey T. Fritz" />
         <DisplayName>Epic Build Music</DisplayName>
         <Description xml:space="preserve">Simple music player that will play EPIC music while your project is building</Description>
         <License>LICENSE</License>
