@@ -14,6 +14,7 @@ namespace Fritz.EpicBuildMusic
 
 		private string _Command;
 		private bool _IsOpen;
+		private bool _Playing;
 
 
 		[DllImport("winmm.dll")]
@@ -39,6 +40,7 @@ namespace Fritz.EpicBuildMusic
 
 		public void BeginPlaying()
 		{
+
 			Trace.WriteLine("Beginning to play music");
 			if (!_IsOpen) Open();
 			Play();
@@ -55,6 +57,7 @@ namespace Fritz.EpicBuildMusic
 			_Command = "close MediaFile";
 			mciSendString(_Command, null, 0, IntPtr.Zero);
 			_IsOpen = false;
+			_Playing = false;
 		}
 
 		private void Open()
@@ -68,14 +71,16 @@ namespace Fritz.EpicBuildMusic
 		{
 			_Command = "pause MediaFile";
 			mciSendString(_Command, null, 0, IntPtr.Zero);
+			_Playing = false;
 		}
 
 		private void Play()
 		{
-			if (_IsOpen)
+			if (_IsOpen && !_Playing)
 			{
 				_Command = "play MediaFile REPEAT";
 				mciSendString(_Command, null, 0, IntPtr.Zero);
+				_Playing = true;
 			}
 		}
 

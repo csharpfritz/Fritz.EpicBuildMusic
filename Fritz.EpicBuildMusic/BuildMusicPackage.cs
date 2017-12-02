@@ -10,6 +10,8 @@ using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Fritz.EpicBuildMusic
 {
@@ -109,6 +111,7 @@ namespace Fritz.EpicBuildMusic
 
 		public int OnQueryCloseProject(IVsHierarchy pHierarchy, int fRemoving, ref int pfCancel)
 		{
+
 			return VSConstants.S_OK;
 		}
 
@@ -119,11 +122,7 @@ namespace Fritz.EpicBuildMusic
 
 		public int OnAfterLoadProject(IVsHierarchy pStubHierarchy, IVsHierarchy pRealHierarchy)
 		{
-			// Track projects in solution
-			//string projectName = "";
-			//pRealHierarchy.GetCanonicalName((uint)fAdded, out projectName);
-			//if (!projects.Contains(projectName)) projects.Add(projectName);
-
+			
 			return VSConstants.S_OK;
 		}
 
@@ -134,7 +133,11 @@ namespace Fritz.EpicBuildMusic
 
 		public int OnBeforeUnloadProject(IVsHierarchy pRealHierarchy, IVsHierarchy pStubHierarchy)
 		{
-			throw new NotImplementedException();
+
+			// Was trying to track projects here
+
+			return VSConstants.S_OK;
+
 		}
 
 		public int OnAfterOpenSolution(object pUnkReserved, int fNewSolution)
@@ -144,8 +147,6 @@ namespace Fritz.EpicBuildMusic
 
 		public int OnQueryCloseSolution(object pUnkReserved, ref int pfCancel)
 		{
-			projects.Clear();
-			currProject = 0;
 			return VSConstants.S_OK;
 		}
 
@@ -161,11 +162,15 @@ namespace Fritz.EpicBuildMusic
 
 		public int UpdateSolution_Begin(ref int pfCancelUpdate)
 		{
+			MusicPlayer.Instance.BeginPlaying();
 			return VSConstants.S_OK;
 		}
 
 		public int UpdateSolution_Done(int fSucceeded, int fModified, int fCancelCommand)
 		{
+
+			MusicPlayer.Instance.StopPlaying();
+
 			return VSConstants.S_OK;
 		}
 
@@ -176,6 +181,7 @@ namespace Fritz.EpicBuildMusic
 
 		public int UpdateSolution_Cancel()
 		{
+			// TODO: Investigate how we handle a cancelled build
 			return VSConstants.S_OK;
 		}
 
@@ -187,10 +193,6 @@ namespace Fritz.EpicBuildMusic
 		public int UpdateProjectCfg_Begin(IVsHierarchy pHierProj, IVsCfg pCfgProj, IVsCfg pCfgSln, uint dwAction, ref int pfCancel)
 		{
 
-			if (currProject == 0) MusicPlayer.Instance.BeginPlaying();
-
-			currProject++;
-
 			return VSConstants.S_OK;
 
 		}
@@ -198,16 +200,35 @@ namespace Fritz.EpicBuildMusic
 		public int UpdateProjectCfg_Done(IVsHierarchy pHierProj, IVsCfg pCfgProj, IVsCfg pCfgSln, uint dwAction, int fSuccess, int fCancel)
 		{
 
-			if (currProject >= projects.Count)
-			{
-				MusicPlayer.Instance.StopPlaying();
-				currProject = 0;
-			}
 			return VSConstants.S_OK;
 
 		}
 
 
 		#endregion
+
+		[Obsolete("Trying to avoid tracking projects in solution")]
+		public void GetProjectsInSolution(bool clearList = false)
+		{
+
+			if (clearList) projects.Clear();
+
+			if (projects.Count > 0) return;
+
+			var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
+			if (dte != null)
+			{
+				var sln = dte.Solution;
+				if (sln != null)
+				{
+					for (int i = 1; i <= sln.Projects.Count; i++)
+					{
+						projects.Add(sln.Projects.Item(i).UniqueName);
+					}
+				}
+			}
+
+		}
+
 	}
 }
