@@ -9,6 +9,7 @@ using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace Fritz.EpicBuildMusic
 {
@@ -41,7 +42,7 @@ namespace Fritz.EpicBuildMusic
 		private IVsSolutionBuildManager2 sbm;
 		private uint updateSolutionEventsCookie;
 		private uint solutionEventsCookie;
-		int totalProjects = 0;
+		List<string> projects = new List<string>();
 		int currProject = 0;
 
 		/// <summary>
@@ -103,9 +104,6 @@ namespace Fritz.EpicBuildMusic
 		public int OnAfterOpenProject(IVsHierarchy pHierarchy, int fAdded)
 		{
 
-			// Track projects in solution
-			totalProjects++;
-
 			return VSConstants.S_OK;
 		}
 
@@ -121,6 +119,11 @@ namespace Fritz.EpicBuildMusic
 
 		public int OnAfterLoadProject(IVsHierarchy pStubHierarchy, IVsHierarchy pRealHierarchy)
 		{
+			// Track projects in solution
+			//string projectName = "";
+			//pRealHierarchy.GetCanonicalName((uint)fAdded, out projectName);
+			//if (!projects.Contains(projectName)) projects.Add(projectName);
+
 			return VSConstants.S_OK;
 		}
 
@@ -141,7 +144,7 @@ namespace Fritz.EpicBuildMusic
 
 		public int OnQueryCloseSolution(object pUnkReserved, ref int pfCancel)
 		{
-			totalProjects = 0;
+			projects.Clear();
 			currProject = 0;
 			return VSConstants.S_OK;
 		}
@@ -195,7 +198,7 @@ namespace Fritz.EpicBuildMusic
 		public int UpdateProjectCfg_Done(IVsHierarchy pHierProj, IVsCfg pCfgProj, IVsCfg pCfgSln, uint dwAction, int fSuccess, int fCancel)
 		{
 
-			if (currProject == totalProjects)
+			if (currProject >= projects.Count)
 			{
 				MusicPlayer.Instance.StopPlaying();
 				currProject = 0;

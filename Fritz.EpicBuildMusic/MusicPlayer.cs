@@ -79,6 +79,8 @@ namespace Fritz.EpicBuildMusic
 			}
 		}
 
+		#region Dispose Methods
+
 		public void Dispose()
 		{
 			Dispose(true);
@@ -92,6 +94,8 @@ namespace Fritz.EpicBuildMusic
 			Close();
 
 		}
+
+		#endregion
 
 	}
 

@@ -5,6 +5,7 @@
         <DisplayName>Epic Build Music</DisplayName>
         <Description xml:space="preserve">Simple music player that will play EPIC music while your project is building</Description>
         <License>LICENSE</License>
+        <Icon>BuildMusicPackage.ico</Icon>
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[15.0]" />
