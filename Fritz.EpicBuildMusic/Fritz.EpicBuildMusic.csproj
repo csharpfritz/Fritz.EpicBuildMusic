@@ -55,7 +55,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BuildMusicPackage.cs" />
+    <Compile Include="GeneralOptionsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GeneralOptionsUserControl.Designer.cs">
+      <DependentUpon>GeneralOptionsUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MusicPlayer.cs" />
+    <Compile Include="OptionPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +80,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="build_over_dialup.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
     <Content Include="Resources\BuildMusicPackage.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
@@ -176,6 +189,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GeneralOptionsUserControl.resx">
+      <DependentUpon>GeneralOptionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VSPackage.resx">
       <MergeWithCTO>true</MergeWithCTO>
       <ManifestResourceName>VSPackage</ManifestResourceName>

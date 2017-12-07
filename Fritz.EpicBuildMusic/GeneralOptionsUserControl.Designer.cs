@@ -75,6 +75,7 @@
       this.MusicDuringBuildTextbox.Name = "MusicDuringBuildTextbox";
       this.MusicDuringBuildTextbox.Size = new System.Drawing.Size(236, 31);
       this.MusicDuringBuildTextbox.TabIndex = 3;
+      this.MusicDuringBuildTextbox.Leave += new System.EventHandler(this.MusicDuringBuildTextbox_Leave);
       // 
       // MusicDuringBuildOpenButton
       // 

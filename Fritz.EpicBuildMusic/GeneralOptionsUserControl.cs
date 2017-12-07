@@ -15,6 +15,7 @@ namespace Fritz.EpicBuildMusic
   {
 
     internal OptionPage OptionPage { get; set; }
+    internal bool _IsInitializing = true;
 
     public GeneralOptionsUserControl()
     {
@@ -24,14 +25,22 @@ namespace Fritz.EpicBuildMusic
     public void Initialize()
     {
 
-      SetDuringBuildDefaultCheckbox();
+      _IsInitializing = true;
+      
+      InitializeDuringBuildControls();
+
+      _IsInitializing = false;
 
     }
 
-    private void SetDuringBuildDefaultCheckbox()
+    private void InitializeDuringBuildControls()
     {
 
       DefaultMusicDuringBuildCheckbox.Checked = (OptionPage.DuringBuildMusic == MusicPlayer.DefaultFileName);
+      if (OptionPage.DuringBuildMusic != MusicPlayer.DefaultFileName)
+      {
+        MusicDuringBuildTextbox.Text = OptionPage.DuringBuildMusic;
+      }
       SetDuringBuildControlsState(!DefaultMusicDuringBuildCheckbox.Checked);
 
     }
@@ -41,32 +50,43 @@ namespace Fritz.EpicBuildMusic
       MusicDuringBuildOpenButton.Enabled = state;
     }
 
-    private void GeneralOptionsUserControl_Leave(object sender, EventArgs e)
-    {
+    private void PersistDuringMusicSelection() {
+
+      if (_IsInitializing) return;
 
       if (DefaultMusicDuringBuildCheckbox.Checked)
       {
         OptionPage.DuringBuildMusic = MusicPlayer.DefaultFileName;
-      } else {
+      }
+      else
+      {
         if (File.Exists(MusicDuringBuildTextbox.Text))
         {
           OptionPage.DuringBuildMusic = MusicDuringBuildTextbox.Text;
-        } else {
+        }
+        else
+        {
           MessageBox.Show($"During Build Music file {MusicDuringBuildTextbox.Text} does not exist.\n\nValue will not be used");
         }
       }
+
     }
 
     private void DefaultMusicDuringBuildCheckbox_CheckedChanged(object sender, EventArgs e)
     {
       SetDuringBuildControlsState(!DefaultMusicDuringBuildCheckbox.Checked);
+      if (DefaultMusicDuringBuildCheckbox.Checked)
+      {
+        MusicDuringBuildTextbox.Text = string.Empty;
+      }
+      PersistDuringMusicSelection();
     }
 
     private void MusicDuringBuildOpenButton_Click(object sender, EventArgs e)
     {
       fileDialog.Title = "Choose a file to play during build";
-      var result = fileDialog.ShowDialog();
       fileDialog.FileOk += FileDialog_FileOk;
+      var result = fileDialog.ShowDialog();
     }
 
     private void FileDialog_FileOk(object sender, CancelEventArgs e)
@@ -75,9 +95,16 @@ namespace Fritz.EpicBuildMusic
       if (!e.Cancel)
       {
         MusicDuringBuildTextbox.Text = fileDialog.FileName;
+        PersistDuringMusicSelection();
       }
       fileDialog.FileOk -= FileDialog_FileOk;
 
     }
+
+    private void MusicDuringBuildTextbox_Leave(object sender, EventArgs e)
+    {
+      PersistDuringMusicSelection();
+    }
+
   }
 }

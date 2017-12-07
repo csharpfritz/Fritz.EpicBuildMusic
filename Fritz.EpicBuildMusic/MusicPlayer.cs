@@ -36,9 +36,12 @@ namespace Fritz.EpicBuildMusic
 
 		#endregion
 
-		public string Filename { get; set; } = @"C:\dev\Fritz.EpicBuildMusic\Fritz.EpicBuildMusic\EpicSax.mp3";
+		public string Filename { get; set;} 
 
-		public void BeginPlaying()
+
+    public const string DefaultFileName = @"build_over_dialup.mp3";
+
+    public void BeginPlaying()
 		{
 
 			Trace.WriteLine("Beginning to play music");
