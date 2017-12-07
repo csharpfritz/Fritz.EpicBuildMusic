@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fritz.EpicBuildMusic
+namespace Fritz.EpicBuildMusic.Core
 {
 
 	public class MusicPlayer : IDisposable
@@ -39,9 +39,9 @@ namespace Fritz.EpicBuildMusic
 		public string Filename { get; set;} 
 
 
-    public const string DefaultFileName = @"build_over_dialup.mp3";
+		public const string DefaultFileName = @"build_over_dialup.mp3";
 
-    public void BeginPlaying()
+		public void BeginPlaying()
 		{
 
 			Trace.WriteLine("Beginning to play music");

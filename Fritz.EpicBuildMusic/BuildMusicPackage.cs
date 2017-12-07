@@ -11,6 +11,7 @@ using Microsoft.VisualStudio.Shell.Interop;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Fritz.EpicBuildMusic.Core;
 
 namespace Fritz.EpicBuildMusic
 {
@@ -215,29 +216,6 @@ namespace Fritz.EpicBuildMusic
 
 
     #endregion
-
-    [Obsolete("Trying to avoid tracking projects in solution")]
-    public void GetProjectsInSolution(bool clearList = false)
-    {
-
-      if (clearList) projects.Clear();
-
-      if (projects.Count > 0) return;
-
-      var dte = (EnvDTE.DTE)GetService(typeof(EnvDTE.DTE));
-      if (dte != null)
-      {
-        var sln = dte.Solution;
-        if (sln != null)
-        {
-          for (int i = 1; i <= sln.Projects.Count; i++)
-          {
-            projects.Add(sln.Projects.Item(i).UniqueName);
-          }
-        }
-      }
-
-    }
 
   }
 
