@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fritz.EpicBuildMusic
+namespace Fritz.EpicBuildMusic.Core
 {
 
 	public class MusicPlayer : IDisposable
@@ -14,6 +14,7 @@ namespace Fritz.EpicBuildMusic
 
 		private string _Command;
 		private bool _IsOpen;
+		private bool _Playing;
 
 
 		[DllImport("winmm.dll")]
@@ -35,10 +36,14 @@ namespace Fritz.EpicBuildMusic
 
 		#endregion
 
-		public string Filename { get; set; } = @"C:\dev\Fritz.EpicBuildMusic\Fritz.EpicBuildMusic\EpicSax.mp3";
+		public string Filename { get; set;} 
+
+
+		public const string DefaultFileName = @"build_over_dialup.mp3";
 
 		public void BeginPlaying()
 		{
+
 			Trace.WriteLine("Beginning to play music");
 			if (!_IsOpen) Open();
 			Play();
@@ -55,6 +60,7 @@ namespace Fritz.EpicBuildMusic
 			_Command = "close MediaFile";
 			mciSendString(_Command, null, 0, IntPtr.Zero);
 			_IsOpen = false;
+			_Playing = false;
 		}
 
 		private void Open()
@@ -68,14 +74,16 @@ namespace Fritz.EpicBuildMusic
 		{
 			_Command = "pause MediaFile";
 			mciSendString(_Command, null, 0, IntPtr.Zero);
+			_Playing = false;
 		}
 
 		private void Play()
 		{
-			if (_IsOpen)
+			if (_IsOpen && !_Playing)
 			{
 				_Command = "play MediaFile REPEAT";
 				mciSendString(_Command, null, 0, IntPtr.Zero);
+				_Playing = true;
 			}
 		}
 
