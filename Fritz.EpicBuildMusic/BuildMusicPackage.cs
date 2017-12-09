@@ -96,10 +96,7 @@ namespace Fritz.EpicBuildMusic
 
       // Get solution build manager
       sbm = ServiceProvider.GlobalProvider.GetService(typeof(SVsSolutionBuildManager)) as IVsSolutionBuildManager2;
-      if (sbm != null)
-      {
-        sbm.AdviseUpdateSolutionEvents(this, out updateSolutionEventsCookie);
-      }
+      sbm?.AdviseUpdateSolutionEvents(this, out updateSolutionEventsCookie);
 
     }
 
