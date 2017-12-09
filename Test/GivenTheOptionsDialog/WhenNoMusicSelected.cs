@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Test.Initialize
+namespace Test.GivenTheOptionsDialog
 {
 
   [TestFixture]
-  public class GivenNoMusicSelected
+  public class WhenNoMusicSelected
   {
     private MockRepository _Mockery;
     private Mock<IBuildMusicOptions> _EmptyBuildMusicOptions;
@@ -42,6 +42,21 @@ namespace Test.Initialize
 
     }
 
+    [Test]
+    public void ShouldEmptyDefaultMusicTextbox()
+    {
+
+      // arrange
+
+
+      // act
+      _Control.Initialize(_EmptyBuildMusicOptions.Object);
+
+      // assert
+      Assert.IsEmpty(_Control.OtherMusicDuringBuild, "No music was selected, but the DefaultMusicDuringBuild textbox had content");
+
+
+    }
   }
 
 

@@ -57,6 +57,7 @@
       <DependentUpon>GeneralOptionsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="IBuildMusicOptions.cs" />
+    <Compile Include="IFileSystemHandler.cs" />
     <Compile Include="MusicPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
