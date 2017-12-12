@@ -7,6 +7,9 @@
 EpicSax.mp3
 *.snk
 
+# Ignore Ian Barker (checkdigits) notes on project
+ianb_notes.txt
+
 # User-specific files
 *.suo
 *.user

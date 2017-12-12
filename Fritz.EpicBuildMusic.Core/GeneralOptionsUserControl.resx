@@ -117,7 +117,211 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DuringBuildFilenameLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="DuringBuildFilenameLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="DuringBuildFilenameLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 17</value>
+  </data>
+  <data name="DuringBuildFilenameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>386, 25</value>
+  </data>
+  <data name="DuringBuildFilenameLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="DuringBuildFilenameLabel.Text" xml:space="preserve">
+    <value>Music to play DURING Build</value>
+  </data>
+  <data name="DuringBuildFilenameLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;DuringBuildFilenameLabel.Name" xml:space="preserve">
+    <value>DuringBuildFilenameLabel</value>
+  </data>
+  <data name="&gt;&gt;DuringBuildFilenameLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DuringBuildFilenameLabel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DuringBuildFilenameLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="DefaultMusicDuringBuildLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="DefaultMusicDuringBuildLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DefaultMusicDuringBuildLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 76</value>
+  </data>
+  <data name="DefaultMusicDuringBuildLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>386, 25</value>
+  </data>
+  <data name="DefaultMusicDuringBuildLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="DefaultMusicDuringBuildLabel.Text" xml:space="preserve">
+    <value>Default Music</value>
+  </data>
+  <data name="DefaultMusicDuringBuildLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildLabel.Name" xml:space="preserve">
+    <value>DefaultMusicDuringBuildLabel</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildLabel.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="DefaultMusicDuringBuildCheckbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="DefaultMusicDuringBuildCheckbox.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="DefaultMusicDuringBuildCheckbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 75</value>
+  </data>
+  <data name="DefaultMusicDuringBuildCheckbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>463, 27</value>
+  </data>
+  <data name="DefaultMusicDuringBuildCheckbox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildCheckbox.Name" xml:space="preserve">
+    <value>DefaultMusicDuringBuildCheckbox</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildCheckbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildCheckbox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;DefaultMusicDuringBuildCheckbox.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <metadata name="fileDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="fileDialog.Filter" xml:space="preserve">
+    <value>Music files|*.mp3;*.wav|All files|*.*</value>
+  </data>
+  <data name="MusicDuringBuildTextbox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Left, Right</value>
+  </data>
+  <data name="MusicDuringBuildTextbox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 14</value>
+  </data>
+  <data name="MusicDuringBuildTextbox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>463, 31</value>
+  </data>
+  <data name="MusicDuringBuildTextbox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildTextbox.Name" xml:space="preserve">
+    <value>MusicDuringBuildTextbox</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildTextbox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildTextbox.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildTextbox.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="MusicDuringBuildOpenButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="MusicDuringBuildOpenButton.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 10pt, style=Bold</value>
+  </data>
+  <data name="MusicDuringBuildOpenButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>864, 3</value>
+  </data>
+  <data name="MusicDuringBuildOpenButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 53</value>
+  </data>
+  <data name="MusicDuringBuildOpenButton.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="MusicDuringBuildOpenButton.Text" xml:space="preserve">
+    <value>...</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildOpenButton.Name" xml:space="preserve">
+    <value>MusicDuringBuildOpenButton</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildOpenButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildOpenButton.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;MusicDuringBuildOpenButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 14</value>
+  </data>
+  <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>922, 118</value>
+  </data>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="DuringBuildFilenameLabel" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="MusicDuringBuildOpenButton" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="DefaultMusicDuringBuildLabel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="DefaultMusicDuringBuildCheckbox" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="MusicDuringBuildTextbox" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,45.48022,Percent,54.51978,Absolute,60" /&gt;&lt;Rows Styles="Percent,50,Percent,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>937, 251</value>
+  </data>
+  <data name="&gt;&gt;fileDialog.Name" xml:space="preserve">
+    <value>fileDialog</value>
+  </data>
+  <data name="&gt;&gt;fileDialog.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>GeneralOptionsUserControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Resources;
 
 namespace Fritz.EpicBuildMusic.Core
 {
@@ -15,15 +16,19 @@ namespace Fritz.EpicBuildMusic.Core
   {
 
     internal IBuildMusicOptions OptionPage { get; private set; }
+    private IFileSystemHandler _FileSystemHandler;
     internal bool _IsInitializing = true;
+    private ResourceManager _ResourceManager;
 
     public GeneralOptionsUserControl()
     {
       InitializeComponent();
     }
 
-    public void Initialize(IBuildMusicOptions options)
+    public void Initialize(IBuildMusicOptions options, IFileSystemHandler fileSystemHandler = null)
     {
+
+      _FileSystemHandler = fileSystemHandler ?? new FileSystemHandler(); 
 
       _IsInitializing = true;
 
@@ -32,26 +37,35 @@ namespace Fritz.EpicBuildMusic.Core
 
       _IsInitializing = false;
 
+      _ResourceManager = new ResourceManager(this.GetType());
+
     }
 
+    /// <summary>
+    /// Initialize the controls that define the music that will play during build
+    /// </summary>
     private void InitializeDuringBuildControls()
     {
 
       DefaultMusicDuringBuild = (string.IsNullOrEmpty(OptionPage.DuringBuildMusic) || OptionPage.DuringBuildMusic == MusicPlayer.DefaultFileName);
       if (OptionPage.DuringBuildMusic != MusicPlayer.DefaultFileName)
       {
-        MusicDuringBuildTextbox.Text = OptionPage.DuringBuildMusic;
+        OtherMusicDuringBuild = OptionPage.DuringBuildMusic;
       }
 
     }
 
-    private void SetDuringBuildControlsState(bool state)
+    private void SetDuringBuildControlsState(bool isDefaultMusic)
     {
-      MusicDuringBuildTextbox.Enabled = state;
-      MusicDuringBuildOpenButton.Enabled = state;
+      MusicDuringBuildTextbox.Enabled = !isDefaultMusic;
+      MusicDuringBuildOpenButton.Enabled = !isDefaultMusic;
+      if (isDefaultMusic)
+      {
+        MusicDuringBuildTextbox.Text = string.Empty;
+      }
     }
 
-    private void PersistDuringMusicSelection()
+    public void PersistDuringMusicSelection()
     {
 
       if (_IsInitializing) return;
@@ -62,13 +76,16 @@ namespace Fritz.EpicBuildMusic.Core
       }
       else
       {
-        if (File.Exists(MusicDuringBuildTextbox.Text))
+        if (string.IsNullOrEmpty(MusicDuringBuildTextbox.Text))
+          return;
+
+        if (_FileSystemHandler.FileExists(MusicDuringBuildTextbox.Text))
         {
           OptionPage.DuringBuildMusic = MusicDuringBuildTextbox.Text;
         }
         else
         {
-          MessageBox.Show($"During Build Music file {MusicDuringBuildTextbox.Text} does not exist.\n\nValue will not be used");
+          MessageBox.Show(string.Format(_ResourceManager.GetString("MessageFileDoesNotExists"), MusicDuringBuildTextbox.Text));
         }
       }
 
@@ -76,17 +93,14 @@ namespace Fritz.EpicBuildMusic.Core
 
     private void DefaultMusicDuringBuildCheckbox_CheckedChanged(object sender, EventArgs e)
     {
-      SetDuringBuildControlsState(!DefaultMusicDuringBuildCheckbox.Checked);
-      if (DefaultMusicDuringBuildCheckbox.Checked)
-      {
-        MusicDuringBuildTextbox.Text = string.Empty;
-      }
+      SetDuringBuildControlsState(DefaultMusicDuringBuildCheckbox.Checked);
+
       PersistDuringMusicSelection();
     }
 
     private void MusicDuringBuildOpenButton_Click(object sender, EventArgs e)
     {
-      fileDialog.Title = "Choose a file to play during build";
+      fileDialog.Title = _ResourceManager.GetString("MessageFileDialogTitle");
       fileDialog.FileOk += FileDialog_FileOk;
       var result = fileDialog.ShowDialog();
     }
@@ -117,9 +131,15 @@ namespace Fritz.EpicBuildMusic.Core
       {
 
         DefaultMusicDuringBuildCheckbox.Checked = value;
-        SetDuringBuildControlsState(!this.DefaultMusicDuringBuild);
+        SetDuringBuildControlsState(this.DefaultMusicDuringBuild);
 
       }
+    }
+
+    public string OtherMusicDuringBuild
+    {
+      get { return MusicDuringBuildTextbox.Text; }
+      set { MusicDuringBuildTextbox.Text = value; }
     }
 
     #endregion
