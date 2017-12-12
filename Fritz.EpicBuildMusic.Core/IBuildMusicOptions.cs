@@ -15,5 +15,4 @@ namespace Fritz.EpicBuildMusic.Core
     string DuringBuildMusic { get; set; }
 
   }
-
 }
