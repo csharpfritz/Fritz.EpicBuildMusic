@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Resources;
 
 namespace Fritz.EpicBuildMusic.Core
 {
@@ -17,6 +18,7 @@ namespace Fritz.EpicBuildMusic.Core
     internal IBuildMusicOptions OptionPage { get; private set; }
     private IFileSystemHandler _FileSystemHandler;
     internal bool _IsInitializing = true;
+    private ResourceManager _ResourceManager;
 
     public GeneralOptionsUserControl()
     {
@@ -34,6 +36,8 @@ namespace Fritz.EpicBuildMusic.Core
       InitializeDuringBuildControls();
 
       _IsInitializing = false;
+
+      _ResourceManager = new ResourceManager(this.GetType());
 
     }
 
@@ -72,13 +76,16 @@ namespace Fritz.EpicBuildMusic.Core
       }
       else
       {
+        if (string.IsNullOrEmpty(MusicDuringBuildTextbox.Text))
+          return;
+
         if (_FileSystemHandler.FileExists(MusicDuringBuildTextbox.Text))
         {
           OptionPage.DuringBuildMusic = MusicDuringBuildTextbox.Text;
         }
         else
         {
-          MessageBox.Show($"During Build Music file {MusicDuringBuildTextbox.Text} does not exist.\n\nValue will not be used");
+          MessageBox.Show(string.Format(_ResourceManager.GetString("MessageFileDoesNotExists"), MusicDuringBuildTextbox.Text));
         }
       }
 
@@ -93,7 +100,7 @@ namespace Fritz.EpicBuildMusic.Core
 
     private void MusicDuringBuildOpenButton_Click(object sender, EventArgs e)
     {
-      fileDialog.Title = "Choose a file to play during build";
+      fileDialog.Title = _ResourceManager.GetString("MessageFileDialogTitle");
       fileDialog.FileOk += FileDialog_FileOk;
       var result = fileDialog.ShowDialog();
     }
