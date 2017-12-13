@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.0
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fritz.EpicBuildMusic", "Fritz.EpicBuildMusic\Fritz.EpicBuildMusic.csproj", "{856EE86C-5F3D-45EE-8C14-24907F8C0AB2}"
 EndProject
@@ -12,6 +12,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared Items", "Shared Items", "{C1F0681D-51D0-41F0-9DD3-52B93424B959}"
 	ProjectSection(SolutionItems) = preProject
 		Key.snk = Key.snk
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5E1F0A4F-5F4F-4610-A83B-9AF0B52B5266}"
+	ProjectSection(SolutionItems) = preProject
+		doc\images\EpicBuildMusicIcon.bmp = doc\images\EpicBuildMusicIcon.bmp
+		doc\images\EpicBuildMusicIcon.ico = doc\images\EpicBuildMusicIcon.ico
+		doc\images\EpicBuildMusicIcon.png = doc\images\EpicBuildMusicIcon.png
+		doc\images\EpicBuildMusicIcon.psd = doc\images\EpicBuildMusicIcon.psd
 	EndProjectSection
 EndProject
 Global
