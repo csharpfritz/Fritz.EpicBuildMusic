@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared Items", "Shared Items", "{C1F0681D-51D0-41F0-9DD3-52B93424B959}"
 	ProjectSection(SolutionItems) = preProject
 		Key.snk = Key.snk
+		SolutionInfo.cs = SolutionInfo.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{5E1F0A4F-5F4F-4610-A83B-9AF0B52B5266}"
