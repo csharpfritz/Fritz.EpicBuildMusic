@@ -189,6 +189,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="VSPackage.de.resx" />
     <EmbeddedResource Include="VSPackage.pt.resx" />
     <EmbeddedResource Include="VSPackage.en.resx">
       <MergeWithCTO>true</MergeWithCTO>

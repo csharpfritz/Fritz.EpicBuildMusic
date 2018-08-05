@@ -70,6 +70,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GeneralOptionsUserControl.de.resx">
+      <DependentUpon>GeneralOptionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GeneralOptionsUserControl.pt.resx">
       <DependentUpon>GeneralOptionsUserControl.cs</DependentUpon>
     </EmbeddedResource>
